@@ -1,0 +1,25 @@
+.menu {
+  display: flex;
+  gap: 16px;
+  padding: 12px 24px;
+  background: #1976d2;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.menu a:hover,
+.menu a.active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.content {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+  font-family: Arial, sans-serif;
+}

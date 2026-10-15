@@ -1,0 +1,66 @@
+<h2>Додати фільм</h2>
+
+<form #itemForm="ngForm" (ngSubmit)="addItem(itemForm)" novalidate>
+
+  <div class="form-group">
+    <label for="title">Назва</label>
+    <input
+      id="title"
+      type="text"
+      name="title"
+      [(ngModel)]="newMovie.title"
+      required
+      minlength="3"
+      maxlength="50"
+      #titleRef="ngModel"
+    >
+    <div class="errors" *ngIf="submitted && titleRef.invalid">
+      <small *ngIf="titleRef.errors?.['required']">Введіть назву фільму</small>
+      <small *ngIf="titleRef.errors?.['minlength']">Назва повинна містити мінімум 3 символи</small>
+      <small *ngIf="titleRef.errors?.['maxlength']">Назва повинна містити максимум 50 символів</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="director">Режисер</label>
+    <input
+      id="director"
+      type="text"
+      name="director"
+      [(ngModel)]="newMovie.director"
+      required
+      minlength="3"
+      maxlength="50"
+      #directorRef="ngModel"
+    >
+    <div class="errors" *ngIf="submitted && directorRef.invalid">
+      <small *ngIf="directorRef.errors?.['required']">Вкажіть режисера</small>
+      <small *ngIf="directorRef.errors?.['minlength']">Ім'я режисера повинно містити мінімум 3 символи</small>
+      <small *ngIf="directorRef.errors?.['maxlength']">Ім'я режисера повинно містити максимум 50 символів</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Опис</label>
+    <textarea
+      id="description"
+      name="description"
+      rows="4"
+      [(ngModel)]="newMovie.description"
+      required
+      minlength="10"
+      #descriptionRef="ngModel"
+    ></textarea>
+    <div class="errors" *ngIf="submitted && descriptionRef.invalid">
+      <small *ngIf="descriptionRef.errors?.['required']">Опис обов'язковий</small>
+      <small *ngIf="descriptionRef.errors?.['minlength']">Опис повинен містити мінімум 10 символів</small>
+    </div>
+  </div>
+
+  <button type="submit">Додати фільм</button>
+</form>
+
+<p class="success" *ngIf="addedTitle">
+  Фільм «{{ addedTitle }}» додано.
+  <a routerLink="/movies">Переглянути список</a>
+</p>

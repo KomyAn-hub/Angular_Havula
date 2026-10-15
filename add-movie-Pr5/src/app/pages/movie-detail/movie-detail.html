@@ -1,0 +1,11 @@
+<div *ngIf="movie; else notFound">
+  <h2>{{ movie.title }}</h2>
+  <p><strong>Режисер:</strong> {{ movie.director }}</p>
+  <p><strong>Опис:</strong> {{ movie.description }}</p>
+</div>
+
+<ng-template #notFound>
+  <h2>Фільм не знайдено</h2>
+</ng-template>
+
+<p><a routerLink="/movies">← Назад до списку</a></p>
