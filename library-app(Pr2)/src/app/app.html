@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Моя бібліотека</h1>
+
+  <p class="total">Всього книг: {{ totalBooks }}</p>
+
+  <div class="form">
+    <h2>Додати нову книгу</h2>
+
+    <input
+      type="text"
+      placeholder="Назва книги"
+      [(ngModel)]="newTitle"
+      name="title"
+    />
+
+    <input
+      type="text"
+      placeholder="Автор"
+      [(ngModel)]="newAuthor"
+      name="author"
+    />
+
+    <input
+      type="number"
+      placeholder="Кількість сторінок"
+      [(ngModel)]="newPages"
+      name="pages"
+    />
+
+    <button
+      (click)="addBook()"
+      [disabled]="isAddDisabled"
+    >
+      Додати книгу
+    </button>
+  </div>
+
+  <!-- Список книг -->
+  <div class="books-list">
+    <div
+      class="book-card"
+      *ngFor="let book of books; let i = index"
+      [ngClass]="getSizeClass(book.pages)"
+    >
+      <h3>{{ book.title }}</h3>
+      <p>Автор: {{ book.author }}</p>
+      <p>Кількість сторінок: {{ book.pages }}</p>
+
+      <p class="badge" *ngIf="book.pages > 350">Велика книга</p>
+
+      <button class="delete-btn" (click)="removeBook(i)">Видалити</button>
+    </div>
+  </div>
+
+  <p *ngIf="books.length === 0" class="empty">Бібліотека порожня.</p>
+</div>

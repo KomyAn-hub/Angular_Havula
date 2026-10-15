@@ -1,0 +1,13 @@
+<div class="movie-detail-page">
+  <div *ngIf="movie">
+    <h1>{{ movie.title }}</h1>
+    <p>Рік: {{ movie.year }}</p>
+    <p>Рейтинг: {{ movie.rating }}/10</p>
+  </div>
+
+  <div *ngIf="!movie">
+    <p>Фільм не знайдено</p>
+  </div>
+
+  <a routerLink="/movies">← Назад до списку</a>
+</div>
